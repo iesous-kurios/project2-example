@@ -27,9 +27,12 @@ layout = html.Div([
     dcc.Markdown("""
         ### Predict
 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Use the controls below to update your predicted interest rate, based on your annual income, 
+        credit score, loan amount, loan purpose, and monthly debts.
     
     """), 
+
+    html.Div(id='prediction-content', style={'fontWeight':'bold'}), 
 
     html.Div([
         dcc.Markdown('###### Annual Income'), 
@@ -88,9 +91,6 @@ layout = html.Div([
         )
     ], style=style),
 
-    dcc.Markdown('### Prediction'), 
-    html.Div(id='prediction-content', style={'marginBottom': '5em'}), 
-
 ])
 
 @app.callback(
@@ -111,4 +111,4 @@ def predict(annual_income, credit_score, loan_amount, loan_purpose, monthly_debt
     y_pred_log = pipeline.predict(df)
     y_pred = np.expm1(y_pred_log)[0]
 
-    return f'Interest rate for 36 month loan: {y_pred:.2f}%'
+    return f'{y_pred:.2f}% interest rate predicted for 36 month Lending Club loan'
