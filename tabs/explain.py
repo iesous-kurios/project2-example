@@ -52,7 +52,7 @@ layout = [dcc.Markdown("""
 ### Explain
 
 This isn't Lending Club data, just an example of 
-[Plotly partial dependence plots in Plotly](https://plot.ly/scikit-learn/plot-partial-dependence/)"""), 
+[partial dependence plots in Plotly](https://plot.ly/scikit-learn/plot-partial-dependence/)"""), 
 
 dcc.Graph(id='explain-graph', figure=fig)
 ]
