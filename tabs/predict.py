@@ -27,8 +27,8 @@ layout = html.Div([
     dcc.Markdown("""
         ### Predict
 
-        Use the controls below to update your predicted interest rate, based on your annual income, 
-        credit score, loan amount, loan purpose, and monthly debts.
+        Use the controls below to update your predicted exit destination, based on length of stay, 
+        income at entry, total household members, and total contact services.
     
     """), 
 
