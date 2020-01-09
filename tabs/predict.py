@@ -77,7 +77,7 @@ layout = html.Div([
     Output('prediction-content', 'children'),
     [Input('len_homeless)', 'value'),
      Input('entry_income', 'value'),
-     Input('CaseMembers', 'value')]
+     Input('CaseMembers', 'value')])
 def predict(len_homeless, entry_income, CaseMembers):
 
     df = pd.DataFrame(
@@ -86,9 +86,8 @@ def predict(len_homeless, entry_income, CaseMembers):
     )
 
     pipeline = load('model/pipeline.joblib')
-    y_pred = pipeline.predict(df)
-    
+    y_pred_list = pipeline.predict(df)
+    y_pred = (y_pred_list)[0]
 
     return f'{"yes" if y_pred == 1 else "No"} client had permanent exit'
-    )
  
