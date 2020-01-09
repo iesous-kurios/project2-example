@@ -16,7 +16,7 @@ history = pd.read_excel('model/n_alltime.xlsx')
 
 
 # Assign to X, y to avoid data leakage
-features = ['3.15_Relationship_to_HoH', 'CaseMembers',
+features = ['CaseMembers',
        '3.2_Social_Security_Quality', '3.3_Birthdate_Quality',
        'Age_at_Enrollment', '3.4_Race', '3.5_Ethnicity', '3.6_Gender',
        '3.7_Veteran_Status', '3.8_Disabling_Condition_at_Entry',
