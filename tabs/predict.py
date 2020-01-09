@@ -37,7 +37,7 @@ layout = html.Div([
     html.Div([
         dcc.Markdown('###### Length of time homeless'), 
         dcc.Slider(
-            id='Length_of_Time_Homeless_(3.917_Approximate_Start)', 
+            id='len_homeless', 
             min=0,
             max=500,
             step=5,
@@ -49,7 +49,7 @@ layout = html.Div([
     html.Div([
         dcc.Markdown('###### Income at Entry'), 
         dcc.Slider(
-            id='4.2_Income_Total_at_Entry', 
+            id='entry_income', 
             min=0,
             max=2000, 
             step=200, 
@@ -75,14 +75,14 @@ layout = html.Div([
 
 @app.callback(
     Output('prediction-content', 'children'),
-    [Input('Length_of_Time_Homeless_(3.917_Approximate_Start)', 'value'),
-     Input('4.2_Income_Total_at_Entry', 'value'),
+    [Input('len_homeless)', 'value'),
+     Input('entry_income', 'value'),
      Input('CaseMembers', 'value')])
-def predict(len_homeless, entry_income, casemembers):
+def predict(len_homeless, entry_income, CaseMembers):
 
     df = pd.DataFrame(
         columns=['Length of time homeless', 'Income at Entry', 'Total Household Size',], 
-        data=[[Length_of_Time_Homeless_(3.917_Approximate_Start), 4.2_Income_Total_at_Entry, CaseMembers]]
+        data=[[len_homeless, entry_income, CaseMembers]]
     )
 
     pipeline = load('model/pipeline.joblib')
