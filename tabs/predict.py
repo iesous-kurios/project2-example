@@ -8,18 +8,7 @@ import pandas as pd
 
 from app import app
 
-loan_purposes = ['Business',
-                 'Car financing',
-                 'Credit card refinancing',
-                 'Debt consolidation',
-                 'Green loan',
-                 'Home buying',
-                 'Home improvement',
-                 'Major purchase',
-                 'Medical expenses',
-                 'Moving and relocation',
-                 'Other',
-                 'Vacation']
+
 
 style = {'padding': '1.5em'}
 
@@ -31,6 +20,8 @@ layout = html.Div([
         income at entry, total household members, and total contact services.
     
     """), 
+    
+    dcc.Markdown(f'{"yes" if y_pred == 1 else "No"} client had permanent exit'),
 
     html.Div(id='prediction-content', style={'fontWeight':'bold'}), 
 
@@ -39,10 +30,10 @@ layout = html.Div([
         dcc.Slider(
             id='len-homeless', 
             min=0,
-            max=500,
+            max=200,
             step=5,
             value=30, 
-            marks={n: str(n) for n in range(0,500,5)}
+            marks={n: str(n) for n in range(0,200,5)}
         ), 
     ], style=style), 
 
