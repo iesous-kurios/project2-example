@@ -28,7 +28,7 @@ layout = html.Div([
     html.Div([
         dcc.Markdown('###### Length of time homeless'), 
         dcc.Slider(
-            id='len-homeless', 
+            id='length-homeless', 
             min=0,
             max=200,
             step=5,
@@ -66,7 +66,7 @@ layout = html.Div([
 
 @app.callback(
     Output('prediction-content', 'children'),
-    [Input('len-homeless)', 'value'),
+    [Input('length-homeless)', 'value'),
      Input('entry-income', 'value'),
      Input('Case-Members', 'value')])
 def predict(len_homeless, entry_income, CaseMembers):
@@ -81,5 +81,5 @@ def predict(len_homeless, entry_income, CaseMembers):
     
 
     return f'{"yes" if y_pred == 1 else "No"} client had permanent exit'
-predict(len-homeless, entry-income, Case-Members)   
+predict(length-homeless, entry-income, Case-Members)   
  
