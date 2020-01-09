@@ -12,13 +12,13 @@ import seaborn as sns
 from app import app
 
 pipeline = load('model/pipeline.joblib')
-history = pd.read_csv('model/lending-club.csv')
-X = history.drop(columns='Interest Rate')
+history = pd.read_excel('model/alltime.xlsx')
+X = history.drop(columns='perm_leaver')
 y_pred_log = pipeline.predict(X)
 y_pred = np.expm1(y_pred_log)
 
 fig, ax = plt.subplots()
-sns.distplot(history['Interest Rate'], hist=False, kde=True, ax=ax, label='Actual')
+sns.distplot(history['perm_leaver'], hist=False, kde=True, ax=ax, label='Actual')
 sns.distplot(y_pred, hist=False, kde=True, ax=ax, label='Predicted')
 ax.set_title('Distribution of predictions is simpler and less spread than actuals')
 ax.legend().set_visible(False)
