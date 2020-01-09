@@ -37,7 +37,7 @@ layout = html.Div([
     html.Div([
         dcc.Markdown('###### Length of time homeless'), 
         dcc.Slider(
-            id='len_homeless', 
+            id='len-homeless', 
             min=0,
             max=500,
             step=5,
@@ -49,7 +49,7 @@ layout = html.Div([
     html.Div([
         dcc.Markdown('###### Income at Entry'), 
         dcc.Slider(
-            id='entry_income', 
+            id='entry-income', 
             min=0,
             max=2000, 
             step=200, 
@@ -61,7 +61,7 @@ layout = html.Div([
     html.Div([
         dcc.Markdown('###### Total Household Size'), 
         dcc.Slider(
-            id='CaseMembers', 
+            id='Case-Members', 
             min=1, 
             max=10, 
             step=1, 
@@ -75,9 +75,9 @@ layout = html.Div([
 
 @app.callback(
     Output('prediction-content', 'children'),
-    [Input('len_homeless)', 'value'),
-     Input('entry_income', 'value'),
-     Input('CaseMembers', 'value')])
+    [Input('len-homeless)', 'value'),
+     Input('entry-income', 'value'),
+     Input('Case-Members', 'value')])
 def predict(len_homeless, entry_income, CaseMembers):
 
     df = pd.DataFrame(
@@ -91,4 +91,3 @@ def predict(len_homeless, entry_income, CaseMembers):
 
     return f'{"yes" if y_pred == 1 else "No"} client had permanent exit'
  
-predict(len_homeless, entry_income, CaseMembers)
