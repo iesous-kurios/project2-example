@@ -77,8 +77,8 @@ def predict(len_homeless, entry_income, CaseMembers):
     )
 
     pipeline = load('model/pipeline.joblib')
-    y_pred_list = pipeline.predict(df)
-    y_pred = (y_pred_list)[0]
+    y_pred = pipeline.predict(df)
+    
 
     return f'{"yes" if y_pred == 1 else "No"} client had permanent exit'
 dcc.Markdown(f'{"yes" if y_pred == 1 else "No"} client had permanent exit')    
