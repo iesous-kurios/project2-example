@@ -12,7 +12,7 @@ import seaborn as sns
 from app import app
 
 pipeline = load('model/pipeline.joblib')
-history = pd.read_excel('model/n_alltime.xlsx')
+history = pd.read_csv('model/n_alltime.csv')
 
 
 # Assign to X, y to avoid data leakage
