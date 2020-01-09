@@ -86,7 +86,9 @@ def predict(len_homeless, entry_income, CaseMembers):
     )
 
     pipeline = load('model/pipeline.joblib')
-    y_pred_log = pipeline.predict(df)
-    y_pred = np.expm1(y_pred_log)[0]
+    y_pred = pipeline.predict(df)
+    
 
-    return f'{y_pred:.2f} client had permanent exit'
+    return f'{"yes" if y_pred == 1 else "No"} client had permanent exit'
+    
+ 
