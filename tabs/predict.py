@@ -77,7 +77,7 @@ layout = html.Div([
     Output('prediction-content', 'children'),
     [Input('Length_of_Time_Homeless_(3.917_Approximate_Start)', 'value'),
      Input('4.2_Income_Total_at_Entry', 'value'),
-     Input('CaseMembers', 'value')]
+     Input('CaseMembers', 'value')])
 def predict(len_homeless, entry_income, casemembers):
 
     df = pd.DataFrame(
