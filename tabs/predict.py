@@ -89,4 +89,4 @@ def predict(len_homeless, entry_income, CaseMembers):
     y_pred_log = pipeline.predict(df)
     y_pred = np.expm1(y_pred_log)[0]
 
-    return f'Client had permanent exit:{y_pred:.2f}'
+    return f'{y_pred:.2f} client had permanent exit'
