@@ -35,21 +35,21 @@ layout = html.Div([
     html.Div(id='prediction-content', style={'fontWeight':'bold'}), 
 
     html.Div([
-        dcc.Markdown('###### Length of Stay'), 
+        dcc.Markdown('###### Length of time homeless'), 
         dcc.Slider(
-            id='bednights', 
+            id='Length_of_Time_Homeless_(3.917_Approximate_Start)', 
             min=0,
-            max=50,
+            max=500,
             step=5,
             value=30, 
-            marks={n: str(n) for n in range(0,50,5)}
+            marks={n: str(n) for n in range(0,500,5)}
         ), 
     ], style=style), 
 
     html.Div([
         dcc.Markdown('###### Income at Entry'), 
         dcc.Slider(
-            id='income', 
+            id='4.2_Income_Total_at_Entry', 
             min=0,
             max=2000, 
             step=200, 
@@ -61,7 +61,7 @@ layout = html.Div([
     html.Div([
         dcc.Markdown('###### Total Household Size'), 
         dcc.Slider(
-            id='casemembers', 
+            id='CaseMembers', 
             min=1, 
             max=10, 
             step=1, 
@@ -71,31 +71,18 @@ layout = html.Div([
     ], style=style),
 
 
-    html.Div([
-        dcc.Markdown('###### Contact Services'), 
-        dcc.Slider(
-            id='services', 
-            min=0, 
-            max=500, 
-            step=20, 
-            value=200, 
-            marks={n: str(n) for n in range(0,500,20)}
-        )
-    ], style=style),
-
 ])
 
 @app.callback(
     Output('prediction-content', 'children'),
-    [Input('bednights', 'value'),
-     Input('income', 'value'),
-     Input('casemembers', 'value'),
-     Input('services', 'value')])
-def predict(bednights, income, casemembers, services):
+    [Input('Length_of_Time_Homeless_(3.917_Approximate_Start)', 'value'),
+     Input('4.2_Income_Total_at_Entry', 'value'),
+     Input('CaseMembers', 'value')
+def predict(Length_of_Time_Homeless_(3.917_Approximate_Start), 4.2_Income_Total_at_Entry, CaseMembers):
 
     df = pd.DataFrame(
-        columns=['Total Bednights', 'Income at Entry', 'Total Household Size', 'Total Contact Services'], 
-        data=[[bednights, income, casemembers, services]]
+        columns=['Length of time homeless', 'Income at Entry', 'Total Household Size',], 
+        data=[[Length_of_Time_Homeless_(3.917_Approximate_Start), 4.2_Income_Total_at_Entry, CaseMembers]]
     )
 
     pipeline = load('model/pipeline.joblib')
