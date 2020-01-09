@@ -21,7 +21,7 @@ layout = html.Div([
     
     """), 
     
-    dcc.Markdown(f'{"yes" if y_pred == 1 else "No"} client had permanent exit'),
+    
 
     html.Div(id='prediction-content', style={'fontWeight':'bold'}), 
 
@@ -81,4 +81,5 @@ def predict(len_homeless, entry_income, CaseMembers):
     y_pred = (y_pred_list)[0]
 
     return f'{"yes" if y_pred == 1 else "No"} client had permanent exit'
+dcc.Markdown(f'{"yes" if y_pred == 1 else "No"} client had permanent exit')    
  
