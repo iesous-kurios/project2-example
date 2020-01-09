@@ -77,7 +77,7 @@ layout = html.Div([
     Output('prediction-content', 'children'),
     [Input('len_homeless)', 'value'),
      Input('entry_income', 'value'),
-     Input('CaseMembers', 'value')])
+     Input('CaseMembers', 'value')]
 def predict(len_homeless, entry_income, CaseMembers):
 
     df = pd.DataFrame(
@@ -90,5 +90,5 @@ def predict(len_homeless, entry_income, CaseMembers):
     
 
     return f'{"yes" if y_pred == 1 else "No"} client had permanent exit'
-    
+    )
  
