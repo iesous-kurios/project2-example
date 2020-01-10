@@ -22,7 +22,7 @@ layout = go.Layout(
     title='Partial Dependence Plot',
     scene={'xaxis': {'title': 'Income at Entry', 'showticklabels': False}, 
            'yaxis': {'title': 'Length of Time Homeless', 'showticklabels': False}, 
-           'zaxis': {'title': 'HouseHold Size', 'showticklabels': False}}, 
+           'zaxis': {'title': 'Probability of Exit to Permanent Housing', 'showticklabels': False}}, 
     width=800, 
     height=800
 )
