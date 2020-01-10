@@ -17,7 +17,7 @@ layout = html.Div([
         credit score, loan amount, loan purpose, and monthly debts.
     
     """), 
-column1 = dbc.Col(
+dbc.Col(
     [
         dcc.Markdown('## Predictions', className='mb-5'), 
         dcc.Markdown('#### Income at Entry'), 
@@ -55,7 +55,7 @@ column1 = dbc.Col(
     md=4,
 )
 ])
-column2 = dbc.Col(
+dbc.Col(
     [
         html.H2('Exit To Permanent Housing', className='mb-5'), 
         html.Div(id='prediction-content', className='lead')
