@@ -80,4 +80,4 @@ def predict(entry_income, length_homeless, CaseMembers):
     )
     pipeline = load('model/pipeline.joblib')
     y_pred = pipeline.predict(df)[0]
-    return(if y_pred = 0 "Client unlikely to exit to Permanent Housing" else "Client likely to exit to Permanent Housing")
+    return f'{y_pred:.0f} A Zero means the client is not likely to exit to Permanent housing, a One will denote a guest likely to exit to Permanent Housing'
