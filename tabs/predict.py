@@ -79,5 +79,5 @@ def predict(entry_income, length_homeless, CaseMembers):
         data=[[entry_income, length_homeless, CaseMembers]]
     )
     pipeline = load('model/pipeline.joblib')
-    y_pred = pipeline.predict(df)[1]
-    return f'{y_pred:.0f} years'
+    y_pred = pipeline.predict(df)[0]
+    return f'{if y_pred = 0 "Client unlikely to exit to Permanent Housing" else "Client likely to exit to Permanent Housing} '
