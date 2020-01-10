@@ -47,7 +47,7 @@ import pandas as pd
 
 @app.callback(
     Output('prediction-content', 'children'),
-    [Input('entry_income', 'value'), Input('length_homeless', 'value'), Input('CaseMembers', 'value'],
+    [Input('entry_income', 'value'), Input('length_homeless', 'value'), Input('CaseMembers', 'value')],
 )
 def predict(entry_income, length_homeless, CaseMembers):
     df = pd.DataFrame(
