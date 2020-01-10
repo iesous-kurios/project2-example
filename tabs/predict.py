@@ -9,7 +9,7 @@ import pandas as pd
 
 from app import app
 
-
+layout = [
 column1 = dbc.Col(
     [
         dcc.Markdown('## Predictions', className='mb-5'), 
@@ -68,3 +68,4 @@ def predict(entry_income, length_homeless, CaseMembers):
     )
     y_pred = pipeline.predict(df)[0]
     return f'{y_pred:.0f} years'
+]
