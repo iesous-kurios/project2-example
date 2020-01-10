@@ -79,5 +79,5 @@ def predict(entry_income, length_homeless, CaseMembers):
         data=[[entry_income, length_homeless, CaseMembers]]
     )
     pipeline = load('model/pipeline.joblib')
-    y_pred = pipeline.predict(df)[0]
+    y_pred = pipeline.predict(df)
     return f'{y_pred:.0f} years'
