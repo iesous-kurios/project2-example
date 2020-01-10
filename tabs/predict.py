@@ -19,6 +19,11 @@ layout = html.Div([
     """), 
 dbc.Col(
     [
+    
+        html.H2('Exit To Permanent Housing', className='mb-5'), 
+        html.Div(id='prediction-content', className='lead')
+        
+        
         dcc.Markdown('## Predictions', className='mb-5'), 
         dcc.Markdown('#### Income at Entry'), 
         dcc.Slider(
