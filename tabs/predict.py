@@ -22,13 +22,15 @@ layout = html.Div([
     """), 
     
     
+    
+    
 
     html.Div(id='prediction-content', style={'fontWeight':'bold'}), 
 
     html.Div([
         dcc.Markdown('###### Length of time homeless'), 
         dcc.Slider(
-            id='length-homeless', 
+            id='length_homeless', 
             min=0,
             max=200,
             step=5,
@@ -40,7 +42,7 @@ layout = html.Div([
     html.Div([
         dcc.Markdown('###### Income at Entry'), 
         dcc.Slider(
-            id='entry-income', 
+            id='entry_income', 
             min=0,
             max=2000, 
             step=200, 
@@ -52,7 +54,7 @@ layout = html.Div([
     html.Div([
         dcc.Markdown('###### Total Household Size'), 
         dcc.Slider(
-            id='Case-Members', 
+            id='CaseMembers', 
             min=1, 
             max=10, 
             step=1, 
@@ -66,20 +68,20 @@ layout = html.Div([
 
 @app.callback(
     Output('prediction-content', 'children'),
-    [Input('length-homeless)', 'value'),
-     Input('entry-income', 'value'),
-     Input('Case-Members', 'value')])
+    [Input('length_homeless)', 'value'),
+     Input('entry_income', 'value'),
+     Input('CaseMembers', 'value')])
 def predict(length_homeless, entry_income, CaseMembers):
 
     df = pd.DataFrame(
-        columns=['Length of time homeless', 'Income at Entry', 'Total Household Size',], 
+        columns=['length_homeless', 'entry_income', 'CaseMembers'], 
         data=[[length_homeless, entry_income, CaseMembers]]
     )
 
     pipeline = load('model/pipeline.joblib')
-    y_pred = pipeline.predict(df)
+    y_pred = pipeline.predict(df)[0]
     
 
-    return f'{y_pred:.2f}% interest rate predicted for 36 month Lending Club loan'
+    return f'{y_pred:.0f} interest rate predicted for 36 month Lending Club loan'
  
  
