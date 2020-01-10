@@ -21,7 +21,7 @@ dbc.Col(
     [
     
         html.H2('Exit To Permanent Housing', className='mb-5'), 
-        html.Div(id='prediction-content', className='lead')
+        html.Div(id='prediction-content', className='lead'),
         
         
         dcc.Markdown('## Predictions', className='mb-5'), 
