@@ -1,3 +1,9 @@
+import dash_bootstrap_components as dbc
+from dash.dependencies import Input, Output
+import dash_core_components as dcc
+import dash_html_components as html
+
+
 column1 = dbc.Col(
     [
         dcc.Markdown('## Predictions', className='mb-5'), 
