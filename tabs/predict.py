@@ -80,6 +80,6 @@ def predict(length_homeless, entry_income, CaseMembers):
     y_pred = pipeline.predict(df)
     
 
-    return f'{"yes" if y_pred == 1 else "No"} client had permanent exit'
+    return f'{y_pred:.2f}% interest rate predicted for 36 month Lending Club loan'
  
  
