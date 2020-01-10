@@ -9,7 +9,14 @@ import pandas as pd
 
 from app import app
 
-layout = 
+layout = html.Div([
+    dcc.Markdown("""
+        ### Predict
+
+        Use the controls below to update your predicted interest rate, based on your annual income, 
+        credit score, loan amount, loan purpose, and monthly debts.
+    
+    """), 
 column1 = dbc.Col(
     [
         dcc.Markdown('## Predictions', className='mb-5'), 
@@ -47,7 +54,7 @@ column1 = dbc.Col(
     ],
     md=4,
 )
-
+])
 column2 = dbc.Col(
     [
         html.H2('Exit To Permanent Housing', className='mb-5'), 
