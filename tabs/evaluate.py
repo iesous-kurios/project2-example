@@ -37,8 +37,8 @@ features = ['CaseMembers',
           ]
 
 X = history[features]
-y_pred_log = pipeline.predict(X)
-y_pred = np.expm1(y_pred_log)
+y_pred = pipeline.predict(X)
+
 
 fig, ax = plt.subplots()
 sns.distplot(history['perm_leaver'], hist=False, kde=True, ax=ax, label='Actual')
@@ -47,6 +47,7 @@ ax.set_title('Distribution of predictions is simpler and less spread than actual
 ax.legend().set_visible(False)
 plotly_fig = mpl_to_plotly(fig)
 plotly_fig['layout']['showlegend'] = True
+
 
 layout = [dcc.Markdown("""
 ### Evaluate
