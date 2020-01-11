@@ -8,11 +8,13 @@ import numpy as np
 import pandas as pd
 from plotly.tools import mpl_to_plotly
 import seaborn as sns
+import xlrd
 
 from app import app
 
 pipeline = load('model/pipeline.joblib')
-history = pd.read_csv('model/n_alltime.csv')
+history = pd.read_csv('model/n_alltime (1).csv')
+
 
 
 # Assign to X, y to avoid data leakage
@@ -33,10 +35,15 @@ features = ['CaseMembers',
        '4.10_Alcohol_Abuse_(Substance_Abuse)', '4.07_Chronic_Health_Condition',
        '4.06_Developmental_Disability', '4.10_Drug_Abuse_(Substance_Abuse)',
        '4.08_HIV/AIDS', '4.09_Mental_Health_Problem',
-       '4.05_Physical_Disability'
+       '4.05_Physical_Disability', 'perm_leaver'
           ]
 
+
 X = history[features]
+X = X.drop(columns='perm_leaver')
+
+
+
 y_pred = pipeline.predict(X)
 
 
