@@ -11,6 +11,8 @@ x = load('model/x.joblib')
 y = load('model/y.joblib')
 z = load('model/z.joblib')
 
+
+
 data = [
     go.Surface(
         z=z, 
@@ -32,6 +34,12 @@ layout = [dcc.Markdown("""
 ### Explain
 
 """), 
+html.Img(src='/assets/shap.png', style={'width':'100%'}),
 
+html.Img(src='/assets/agebreakdown.png', style={'width':'100%'}),
+html.Img(src='/assets/racebreakdown.png', style={'width':'100%'}),
+html.Img(src='/assets/ethnicitybreakdown.png', style={'width':'100%'}),
+
+html.Img(src='/assets/testplot.png', style={'width':'100%'}),
 dcc.Graph(id='explain-graph', figure=fig)
 ]
