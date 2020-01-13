@@ -37,7 +37,8 @@ layout = [dcc.Markdown("""
 dcc.Markdown("""
 ### Shapley Plot
 
-This plot shows the average of the marginal contributions across all permutations.   
+This plot shows the average of the marginal contributions across all permutations.
+SHAP values can show how much each predictor contributes, either positively or negatively, to the target variable ( in this case; exit to permanent housing)
 """), 
 html.Img(src='/assets/shap.png', style={'width':'100%'}),
 
@@ -45,6 +46,11 @@ html.Img(src='/assets/agebreakdown.png', style={'width':'100%'}),
 html.Img(src='/assets/racebreakdown.png', style={'width':'100%'}),
 html.Img(src='/assets/ethnicitybreakdown.png', style={'width':'100%'}),
 
+dcc.Markdown("""
+### Feature Importances
+
+This plot shows the top 20 features that had the most impact on the accuracy of my model
+"""), 
 html.Img(src='/assets/testplot.png', style={'width':'100%'}),
 dcc.Graph(id='explain-graph', figure=fig)
 ]

@@ -60,6 +60,8 @@ plotly_fig['layout']['showlegend'] = True
 layout = [dcc.Markdown("""
 ### Evaluate
 
+This graph displays the actual outcomes of previous guests and the predicted outcomes of those same guests.  The model proved to be very accurate in predicting whether a guest left to permanent housing or not.
+
 """), 
 
 dcc.Graph(id='evaluate-graph', figure=plotly_fig)

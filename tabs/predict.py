@@ -13,11 +13,35 @@ pipeline = load('model/pipeline.joblib')
 
 from app import app
 
+genders = [ 'Male', 
+            'Female', 
+            'Client refused',     
+            'Trans Male (FTM or Female to Male)',
+            'Trans Female (MTF or Male to Female)'
+            ]
+
+insurances = ['Yes', 
+             'No', 
+             'Data Not Collected', 
+             'Client refused', 
+             "Client doesn't know"
+             ]            
+
+homeless3years = [
+             'One time', 
+             'Two times', 
+             'Three times',
+             'Four or more times',
+             'Data not collected',             
+             'Client refused',          
+             "Client doesn't know"
+             ]             
+
 layout = html.Div([
     dcc.Markdown("""
         ### Predict
 
-        Use the controls below to predict exit destination of a client based off of features which proved to have high significance in my prediction model
+        Use the controls below to predict exit destination of a family based off of features declared by the head of household which proved to have high significance in my prediction model
     
     """), 
 
@@ -25,12 +49,36 @@ layout = html.Div([
 dbc.Col(
     [
 
+        
 
         html.H2('Exit To Permanent Housing', className='mb-5'), 
         html.Div(id='prediction-content', className='lead'),
-        
-        
+
+
+
         dcc.Markdown('## Predictions', className='mb-5'), 
+
+        dcc.Markdown('###### Reported Gender'), 
+        dcc.Dropdown(
+            id='gender', 
+            options=[{'label': purpose, 'value': purpose} for purpose in genders], 
+            value=genders[0]
+        ), 
+
+        dcc.Markdown('###### Covered by Health Insurance'), 
+        dcc.Dropdown(
+            id='insurance', 
+            options=[{'label': purpose, 'value': purpose} for purpose in insurances], 
+            value=insurances[0]
+        ), 
+
+        dcc.Markdown('###### How many times homeless in the last 3 years'), 
+        dcc.Dropdown(
+            id='timeshomeless', 
+            options=[{'label': purpose, 'value': purpose} for purpose in homeless3years], 
+            value=genders[0]
+        ), 
+        
         dcc.Markdown('#### Income at Entry'), 
         dcc.Slider(
             id='entry_income', 
@@ -99,9 +147,11 @@ import pandas as pd
 @app.callback(
     dash.dependencies.Output('prediction-content', 'children'),
     [dash.dependencies.Input('entry_income', 'value'), dash.dependencies.Input('length_homeless', 'value'), 
-    dash.dependencies.Input('CaseMembers', 'value'), dash.dependencies.Input('Age_at_Enrollment', 'value')],
+    dash.dependencies.Input('CaseMembers', 'value'), dash.dependencies.Input('Age_at_Enrollment', 'value'),
+    dash.dependencies.Input('gender', 'value'), dash.dependencies.Input('insurance', 'value'),
+    dash.dependencies.Input('timeshomeless', 'value')],
 )
-def predict(entry_income, length_homeless, CaseMembers, Age_at_Enrollment):
+def predict(entry_income, length_homeless, CaseMembers, Age_at_Enrollment, gender, insurance, timeshomeless):
     df = pd.DataFrame(
         columns=['CaseMembers','3.2_Social_Security_Quality', '3.3_Birthdate_Quality',
        'Age_at_Enrollment', '3.4_Race', '3.5_Ethnicity', '3.6_Gender',
@@ -122,9 +172,9 @@ def predict(entry_income, length_homeless, CaseMembers, Age_at_Enrollment):
        '4.05_Physical_Disability'
           ], 
         data=[[CaseMembers, np.NaN, np.NaN, Age_at_Enrollment, 
-        np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, length_homeless, 
-        np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, 
-        np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN,
+        np.NaN, np.NaN, gender, np.NaN, np.NaN, np.NaN, length_homeless, 
+        timeshomeless, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, 
+        insurance, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN,
         np.NaN, entry_income, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, np.NaN,
         np.NaN, np.NaN, np.NaN, np.NaN, np.NaN]]
     )
@@ -132,6 +182,6 @@ def predict(entry_income, length_homeless, CaseMembers, Age_at_Enrollment):
     y_pred = pipeline.predict(df)[0]
     
     if y_pred == 0:
-        return f'This example returned a {y_pred:.0f} which indicates that the client is not likely to exit to Perm Housing'
+        return f'This example returned a {y_pred:.0f} which indicates that the family is not likely to exit to Perm Housing'
     else:    
-        return f'This example returned a {y_pred:.0f} which indicates that the client is likely to exit to Permanent housing'  
+        return f'This example returned a {y_pred:.0f} which indicates that the family is likely to exit to Permanent housing'  
