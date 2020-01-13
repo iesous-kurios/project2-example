@@ -34,6 +34,11 @@ layout = [dcc.Markdown("""
 ### Explain
 
 """), 
+dcc.Markdown("""
+### Shapley Plot
+
+This plot shows the average of the marginal contributions across all permutations.   
+"""), 
 html.Img(src='/assets/shap.png', style={'width':'100%'}),
 
 html.Img(src='/assets/agebreakdown.png', style={'width':'100%'}),
