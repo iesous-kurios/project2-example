@@ -51,7 +51,7 @@ y_pred = pipeline.predict(X)
 fig, ax = plt.subplots()
 sns.distplot(history['perm_leaver'], hist=False, kde=True, ax=ax, label='Actual')
 sns.distplot(y_pred, hist=False, kde=True, ax=ax, label='Predicted')
-ax.set_title('Distribution of predictions is simpler and less spread than actuals')
+ax.set_title('Distribution of Actual Exit compared to prediction')
 ax.legend().set_visible(False)
 plotly_fig = mpl_to_plotly(fig)
 plotly_fig['layout']['showlegend'] = True
