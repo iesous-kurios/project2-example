@@ -60,7 +60,10 @@ plotly_fig['layout']['showlegend'] = True
 layout = [dcc.Markdown("""
 ### Evaluate
 
-This graph displays the actual outcomes of previous guests and the predicted outcomes of those same guests.  The model proved to be very accurate in predicting whether a guest left to permanent housing or not.
+This graph displays the actual outcomes of previous guests and the predicted outcomes of those same guests.  
+The model proved to be more accurate in predicting non-permanent exits versus predicting permanent exits, which is tailored
+pretty well to the purpose of this webapp: predicting households not likely to exit to permanent housing to provide more 
+case management to them in an effort to ensure they do end up leaving for permanent housing.  
 
 """), 
 
