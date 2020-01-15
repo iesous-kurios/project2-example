@@ -13,7 +13,7 @@ import xlrd
 from app import app
 
 pipeline = load('model/pipeline.joblib')
-history = pd.read_csv('model/n_alltime (1).csv')
+history = pd.read_csv('model/n_alltime.csv')
 
 
 
