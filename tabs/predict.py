@@ -51,7 +51,7 @@ dbc.Col(
 
         
 
-        html.H2('Exit To Permanent Housing', className='mb-5'), 
+        html.H1('Adjust features below to predict the exit destination of household', className='mb-5'), 
         html.Div(id='prediction-content', className='lead'),
 
 
@@ -182,6 +182,6 @@ def predict(entry_income, length_homeless, CaseMembers, Age_at_Enrollment, gende
     y_pred = pipeline.predict(df)[0]
     
     if y_pred == 0:
-        return f'This example returned a {y_pred:.0f} which indicates that the family is not likely to exit to Perm Housing'
+        return html.H3('Household NOT likely to exit to Permanent Housing', className='mb-5'),
     else:    
-        return f'This example returned a {y_pred:.0f} which indicates that the family is likely to exit to Permanent housing'  
+        return html.H3('Household likely to exit to Permanent Housing', className='mb-5')
