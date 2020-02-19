@@ -1,4 +1,14 @@
 category-encoders==2.1.0
+jinja2 = "*"
+basilica = "*"
+tweepy = "*"
+redis = "*"
+psycopg2 = "*"
+flask-sqlalchemy = "*"
+gunicorn = "*"
+scikit-learn = "*"
+birdisle = "*"
+python-dotenv = "*"
 Click==7.0
 cycler==0.10.0
 dash==1.7.0
