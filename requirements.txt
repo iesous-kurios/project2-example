@@ -1,5 +1,5 @@
 category-encoders==2.1.0
-jinja2==1.2
+jinja==1.2
 basilica==0.2.8
 tweepy==3.8.0
 redis==3.5.3
