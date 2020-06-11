@@ -1,5 +1,5 @@
 category-encoders==2.1.0
-scikit-learn==0.23.1
+scikit-learn==0.22.1
 python-dotenv==0.13.0
 dash==1.7.0
 dash-core-components==1.6.0
