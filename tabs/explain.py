@@ -42,9 +42,9 @@ SHAP values can show how much each predictor contributes, either positively or n
 """), 
 html.Img(src='/assets/shap.png', style={'width':'100%'}),
 
-html.Img(src='/assets/agebreakdown.png', style={'width':'100%'}),
-html.Img(src='/assets/racebreakdown.png', style={'width':'100%'}),
-html.Img(src='/assets/real_ethnicity.png', style={'width':'100%'}),
+html.Img(src='/assets/agebreakdown2.png', style={'width':'100%'}),
+html.Img(src='/assets/racebreakdown2.png', style={'width':'100%'}),
+html.Img(src='/assets/real_ethnicity2.png', style={'width':'100%'}),
 
 
 dcc.Markdown("""
