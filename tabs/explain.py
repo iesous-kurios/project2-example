@@ -52,6 +52,6 @@ dcc.Markdown("""
 
 This plot shows the top 20 features that had the most impact on the accuracy of my model
 """), 
-html.Img(src='/assets/testplot.png', style={'width':'100%'}),
+html.Img(src='/assets/testplot2.png', style={'width':'100%'}),
 dcc.Graph(id='explain-graph', figure=fig)
 ]
