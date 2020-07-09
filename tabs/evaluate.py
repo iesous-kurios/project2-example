@@ -1,7 +1,7 @@
 from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
-
+import plotly.graph_objects as go
 from joblib import load
 import matplotlib.pyplot as plt
 import numpy as np
@@ -14,7 +14,6 @@ from app import app
 
 pipeline = load('model/pipeline.joblib')
 history = pd.read_csv('model/n_alltime.csv')
-
 
 
 
@@ -53,6 +52,11 @@ sns.distplot(history['perm_leaver'], hist=False, kde=True, ax=ax, label='Actual'
 sns.distplot(y_pred, hist=False, kde=True, ax=ax, label='Predicted')
 ax.set_title('Distribution of Actual Exit compared to prediction')
 ax.legend().set_visible(False)
+#ax.set(ylabel='Total Guests (muliply by 100)', xlabel='0 = Non-Perm, 1 = Perm Exit')
+
+plt.xlabel('0 = Non-Perm Exit, 1 = Perm Exit', fontsize=18)
+plt.ylabel('Total Guests (multiply # by 100)', fontsize=18)
+
 plotly_fig = mpl_to_plotly(fig)
 plotly_fig['layout']['showlegend'] = True
 
